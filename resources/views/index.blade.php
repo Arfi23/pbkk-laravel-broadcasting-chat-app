@@ -33,9 +33,7 @@
     </div>
 </body>
 <script>
-    const pusher = new Pusher('{{config(', broadcasting.connections.pusher.key, ')}}', {
-        cluster: 'ap1'
-    });
+    const pusher = new Pusher('{{ config('broadcasting.connections.pusher.key')}}', {cluster: 'ap1'});
     const channel = pusher.subscribe('public');
 
     //Receive messages
@@ -45,6 +43,7 @@
                 message: data.message,
             })
             .done(function(res) {
+                console.log(res);
                 $(".messages > .message").last().after(res);
                 $(document).scrollTop($(document).height());
             });
@@ -65,6 +64,7 @@
                 message: $("form #message").val(),
             }
         }).done(function(res) {
+            console.log(res);
             $(".messages > .message").last().after(res);
             $("form #message").val('');
             $(document).scrollTop($(document).height());

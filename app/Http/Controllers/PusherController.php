@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Events\MessageNotification;
 use Illuminate\Http\Request;
 
